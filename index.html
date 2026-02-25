@@ -1,37 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="sr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agro Fokus</title>
-</head>
 
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#2e7d32;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header img{
+height:60px;
+}
+
+nav{
+background:#1b5e20;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+max-width:900px;
+margin:auto;
+background:white;
+}
+
+.news{
+border-bottom:1px solid #ddd;
+padding:10px;
+}
+
+.admin{
+margin-top:40px;
+padding:20px;
+background:#eee;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+}
+
+button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:10px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
 <body>
 
-<h1>Agro Fokus portal</h1>
+<header>
 
-<h2>ADMIN PANEL</h2>
+<h1>Agro Fokus</h1>
+<p>Poljoprivredne vesti, saveti i analize</p>
 
-<input type="text" id="naslov" placeholder="Naslov"><br><br>
+</header>
 
-<textarea id="tekst" placeholder="Tekst vesti"></textarea><br><br>
+<nav>
 
-<button onclick="dodajVest()">Objavi vest</button>
+<a href="#">Početna</a>
+<a href="#">Vesti</a>
+<a href="#">Voćarstvo</a>
+<a href="#">Ratarstvo</a>
+<a href="#">Kontakt</a>
 
-<hr>
+</nav>
 
-<div id="vesti"></div>
+<div class="container">
+
+<h2>Najnovije vesti</h2>
+
+<div id="news"></div>
+
+<div class="admin">
+
+<h3>ADMIN PANEL</h3>
+
+<input id="title" placeholder="Naslov vesti">
+
+<textarea id="text" placeholder="Tekst vesti"></textarea>
+
+<button onclick="addNews()">Objavi vest</button>
+
+</div>
+
+</div>
 
 <script>
-function dodajVest() {
 
-let naslov = document.getElementById("naslov").value;
-let tekst = document.getElementById("tekst").value;
+function addNews(){
 
-let html = "<h3>" + naslov + "</h3><p>" + tekst + "</p>";
+let title=document.getElementById("title").value;
+let text=document.getElementById("text").value;
 
-document.getElementById("vesti").innerHTML += html;
+let news=document.getElementById("news");
+
+news.innerHTML+=`
+<div class="news">
+<h3>${title}</h3>
+<p>${text}</p>
+</div>
+`;
 
 }
+
 </script>
 
 </body>
