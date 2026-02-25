@@ -4,8 +4,35 @@
 <meta charset="UTF-8">
 <title>Agro Fokus</title>
 </head>
+
 <body>
-<h1>Agro Fokus portal radi!</h1>
-<p>Sajt je uspešno postavljen.</p>
+
+<h1>Agro Fokus portal</h1>
+
+<h2>ADMIN PANEL</h2>
+
+<input type="text" id="naslov" placeholder="Naslov"><br><br>
+
+<textarea id="tekst" placeholder="Tekst vesti"></textarea><br><br>
+
+<button onclick="dodajVest()">Objavi vest</button>
+
+<hr>
+
+<div id="vesti"></div>
+
+<script>
+function dodajVest() {
+
+let naslov = document.getElementById("naslov").value;
+let tekst = document.getElementById("tekst").value;
+
+let html = "<h3>" + naslov + "</h3><p>" + tekst + "</p>";
+
+document.getElementById("vesti").innerHTML += html;
+
+}
+</script>
+
 </body>
 </html>
