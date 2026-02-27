@@ -2,17 +2,30 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: editorial_workflow
 
 collections:
-  - name: "vesti"
-    label: "Vesti"
-    folder: "vesti"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Naslov", name: "title", widget: "string"}
-      - {label: "Tekst", name: "body", widget: "markdown"}
-      - {label: "Slika", name: "image", widget: "image", required: false}
-      - {label: "YouTube", name: "youtube", widget: "string", required: false}
+  - name: "podesavanja"
+    label: "Портал"
+    files:
+      - name: "vesti"
+        label: "Вести"
+        file: "content/vesti.json"
+        format: "json"
+        fields:
+          - label: "Листа вести"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title_cyr}}"
+            fields:
+              - { label: "ID/Slug (латиницом, без размака)", name: "slug", widget: "string" }
+              - { label: "Датум", name: "date", widget: "datetime" }
+              - { label: "Наслов (ћирилица)", name: "title_cyr", widget: "string" }
+              - { label: "Наслов (латиница)", name: "title_lat", widget: "string" }
+              - { label: "Текст (ћирилица)", name: "body_cyr", widget: "markdown" }
+              - { label: "Текст (латиница)", name: "body_lat", widget: "markdown" }
+              - { label: "Насловна слика", name: "image", widget: "image", required: false }
+              - { label: "YouTube линк", name: "youtube", widget: "string", required: false }
