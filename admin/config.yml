@@ -5,27 +5,23 @@ backend:
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-publish_mode: editorial_workflow
+publish_mode: simple
 
 collections:
-  - name: "podesavanja"
-    label: "Портал"
-    files:
-      - name: "vesti"
-        label: "Вести"
-        file: "content/vesti.json"
-        format: "json"
+  - name: "vesti"
+    label: "Vesti"
+    file: "content/vesti.json"
+    format: "json"
+    fields:
+      - label: "Lista vesti"
+        name: "items"
+        widget: "list"
         fields:
-          - label: "Листа вести"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.title_cyr}}"
-            fields:
-              - { label: "ID/Slug (латиницом, без размака)", name: "slug", widget: "string" }
-              - { label: "Датум", name: "date", widget: "datetime" }
-              - { label: "Наслов (ћирилица)", name: "title_cyr", widget: "string" }
-              - { label: "Наслов (латиница)", name: "title_lat", widget: "string" }
-              - { label: "Текст (ћирилица)", name: "body_cyr", widget: "markdown" }
-              - { label: "Текст (латиница)", name: "body_lat", widget: "markdown" }
-              - { label: "Насловна слика", name: "image", widget: "image", required: false }
-              - { label: "YouTube линк", name: "youtube", widget: "string", required: false }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Datum", name: "date", widget: "datetime" }
+          - { label: "Naslov (ćirilica)", name: "title_cyr", widget: "string" }
+          - { label: "Naslov (latinica)", name: "title_lat", widget: "string" }
+          - { label: "Tekst (ćirilica)", name: "body_cyr", widget: "markdown" }
+          - { label: "Tekst (latinica)", name: "body_lat", widget: "markdown" }
+          - { label: "Slika", name: "image", widget: "image", required: false }
+          - { label: "YouTube link", name: "youtube", widget: "string", required: false }
