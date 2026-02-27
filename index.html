@@ -1,135 +1,28 @@
-<!DOCTYPE html>
-<html lang="sr">
+<!doctype html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agro Fokus</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agro Fokus Admin</title>
 
-<style>
-
-body{
-font-family: Arial;
-margin:0;
-background:#f4f4f4;
-}
-
-header{
-background:#2e7d32;
-color:white;
-padding:20px;
-text-align:center;
-}
-
-header img{
-height:60px;
-}
-
-nav{
-background:#1b5e20;
-padding:10px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.container{
-padding:20px;
-max-width:900px;
-margin:auto;
-background:white;
-}
-
-.news{
-border-bottom:1px solid #ddd;
-padding:10px;
-}
-
-.admin{
-margin-top:40px;
-padding:20px;
-background:#eee;
-}
-
-input, textarea{
-width:100%;
-padding:10px;
-margin-top:10px;
-}
-
-button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:10px;
-margin-top:10px;
-}
-
-</style>
-
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-<header>
-
-<h1>Agro Fokus</h1>
-<p>Poljoprivredne vesti, saveti i analize</p>
-
-</header>
-
-<nav>
-
-<a href="#">Početna</a>
-<a href="#">Vesti</a>
-<a href="#">Voćarstvo</a>
-<a href="#">Ratarstvo</a>
-<a href="#">Kontakt</a>
-
-</nav>
-
-<div class="container">
-
-<h2>Najnovije vesti</h2>
-
-<div id="news"></div>
-
-<div class="admin">
-
-<h3>ADMIN PANEL</h3>
-
-<input id="title" placeholder="Naslov vesti">
-
-<textarea id="text" placeholder="Tekst vesti"></textarea>
-
-<button onclick="addNews()">Objavi vest</button>
-
-</div>
-
-</div>
-
-<script>
-
-function addNews(){
-
-let title=document.getElementById("title").value;
-let text=document.getElementById("text").value;
-
-let news=document.getElementById("news");
-
-news.innerHTML+=`
-<div class="news">
-<h3>${title}</h3>
-<p>${text}</p>
-</div>
-`;
-
-}
-
-</script>
-
+  <script>
+    // Kad se uloguješ, da te ne vraća čudno:
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
